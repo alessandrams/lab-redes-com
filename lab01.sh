@@ -30,12 +30,12 @@ elif [ "$VM" == "ROT-A" ];
   then
     GW=$(dialog --stdout --inputbox 'Digite o número IP do Gatway padrao: ' 0 0 )
     clear >$(tty)
-    sudo echo "Iniciando config da $VM..."
-    sudo ifconfig $INT $CIDR
-    sudo echo 1 > /proc/sys/net/ipv4/ip_forward
-    sudo route add default gw $GW
-    sudo iptables -t nat -A POSTROUTING -o $INT -j SNAT --to $GW
-    sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf
+    echo "Iniciando config da $VM..."
+    ifconfig $INT $CIDR
+    echo 1 > /proc/sys/net/ipv4/ip_forward
+    route add default gw $GW
+    iptables -t nat -A POSTROUTING -o $INT -j SNAT --to $GW
+    echo "nameserver 8.8.8.8" > /etc/resolv.conf
 fi
 
 ifconfig -a
