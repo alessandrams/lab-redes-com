@@ -21,12 +21,12 @@ INT=$(eval $int_dialog)
 CIDR=$(dialog --stdout --inputbox 'Digite o número IP e Mascara (modelo CIDR): ' 0 0 )
 
 
-if [ $VM == "VM-A"]
+if [ "$VM" == "VM-A" ];
   then
     clear >$(tty)
     echo "Iniciando config da $VM..."
     sudo ifconfig $INT $CIDR
-elif [ $VM == "ROT-A"]
+elif [ "$VM" == "ROT-A" ];
   then
     GW=$(dialog --stdout --inputbox 'Digite o número IP do Gatway padrao: ' 0 0 )
     clear >$(tty)
