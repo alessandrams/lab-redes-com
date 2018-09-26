@@ -13,8 +13,7 @@ int_dialog="dialog --stdout --title \"Escolha de interface\" --menu \"Escolha a 
 int_desc="Interface"
 
 # Iniciando o programa
-dialog --title "Configuração de rede" --msgbox "Bem vindo ao guia de configuração de interfaces de rede." 7 4
-0
+dialog --title "Configuração de rede" --msgbox "Bem vindo ao guia de configuração de interfaces de rede." 7 40
 
 # Tela para escolha da VM para config
 VM=$(dialog --stdout --title "Escolha de VM" --menu "Escolha a VM para ser configurada" 0 0 0 VM-A  'Maquina Virtual A' ROT-A "Roteador A")
@@ -31,7 +30,7 @@ CIDR=$(dialog --stdout --inputbox 'Digite o número IP e Mascara (modelo CIDR).\
 
 
 if [ "$VM" == "VM-A" ];
-  thencat /et
+  then
     clear >$(tty)
     echo "Iniciando config da $VM..."
     ifconfig $INT $CIDR
@@ -65,6 +64,6 @@ EOF
     fi
 fi
 
-ECHO "\n------------- Configuracoes Finais -----------------\n"
+echo "\n------------- Configuracoes Finais -----------------\n"
 ifconfig -a
 route -n
