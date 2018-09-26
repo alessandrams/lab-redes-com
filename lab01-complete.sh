@@ -99,7 +99,8 @@ elif [ "$VM" == "ROT-A" ];
         echo 1 > /proc/sys/net/ipv4/ip_forward
 EOF
         route add default gw $GW
-        iptables -t nat -A POSTROUTING -o $INT -j SNAT --to $CIDR
+	IP=${CIDR::-3}
+        iptables -t nat -A POSTROUTING -o $INT -j SNAT --to $IP
         echo "nameserver 8.8.8.8" > /etc/resolv.conf
     # Se for interna, so precisa de IP
     elif [ "$TIPOREDE" == "Interna" ];
