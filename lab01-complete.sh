@@ -87,6 +87,7 @@ if [ "$VM" == "VM-A" ];
     echo "Iniciando config da $VM..."
     ifconfig $INT $CIDR
     route add default gw $GW
+    echo "nameserver 8.8.8.8" > /etc/resolv.conf
 elif [ "$VM" == "ROT-A" ];
   then
     # Verifica o tipo de rede informada. Se for NAT precisa de IP, GW, ip_forward, iptables e servidor dns
