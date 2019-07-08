@@ -47,7 +47,7 @@ fi
 
 
 if [ $remoteIP ] ; then
-    sshpass -p "$senha" ssh -t "$user@$remoteIP" "sudo python3 ~/script/ICMP-Ping.py --Message 'oi tudo bem' --Shift "$shift" --Host "$destinationIP""
+    sshpass -p "$senha" ssh -t "$user@$remoteIP" "sudo python3 ~/script/ICMP-Ping.py --Message '$message' --Shift "$shift" --Host "$destinationIP""
     #chmod 777 ~/script/ICMP-Ping.py
     #sudo python3 ICMP-Ping.py --Message "$message" --Shift "$shift" --Host "$destinationIP"
 else
@@ -55,15 +55,8 @@ else
     sudo python3 ICMP-Ping.py --Message "$message" --Shift "$shift" --Host "$destinationIP"
 fi    
   
-echo $message
-echo $remoteIP
-echo $shift
-echo $destinationIP
+#echo $message
+#echo $remoteIP
+#echo $shift
+#echo $destinationIP
 
-
-# dialog \
-#    --title "Nao e super usuario/root" \
-#    --msgbox "Execute o script como super usuario/root" \
-#    7 40
-
-#cls    
