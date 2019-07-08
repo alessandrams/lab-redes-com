@@ -108,15 +108,11 @@ class Pinger(object):
 
         # Create a dummy heder with a 0 checksum.
         header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, my_checksum, ID, 1)
-        #bytes_In_double = struct.calcsize("d")
-        # Data sent in ping pack
-        #data = (192 - bytes_In_double) * "Q"
-        #data = "ale efofa"
         data = self.message_cryp
         data = struct.pack("d", time.time()) + bytes(data.encode('utf-8'))
 
         # Get the checksum on the data and the dummy header.
-        print (header + data)
+        #print (header + data)
         my_checksum = self.do_checksum(header + data)
         header = struct.pack(
       "bbHHh", ICMP_ECHO_REQUEST, 0, socket.htons(my_checksum), ID, 1
@@ -189,15 +185,9 @@ def encrypt(message, shift):
 	return cipher
 
 def messageCryp(message, shift):
-	#DIALOG message = input("Digite uma mensagem: ")
-	#DIALOG shift = int(input("Digite um valor de shift: "))
-
-        result = encrypt(message.upper(), shift)
-	#print ("\nMensagem criptografada: " + result)
-    #message = result
-	#result = decrypt(message.upper(), shift)
-	#print ("Mensagem decriptografada: " + result)
-        return result
+    result = encrypt(message.upper(), shift)    
+    #print("\nMensagem criptografada: " + result)
+    return result
 ################################################################
 
 
